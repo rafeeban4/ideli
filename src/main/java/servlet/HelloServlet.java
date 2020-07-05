@@ -10327,7 +10327,7 @@ public class HelloServlet extends HttpServlet {
                 "}\n" +
                 ".business-hours .opening-hours li.today {\n" +
                 "color: #ffac0c; \n" +
-                "}"
+                "}";
     }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
