@@ -23,7 +23,7 @@ public class HelloServlet extends HttpServlet {
 
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
-        File css = new File("styles.css");
+        File css = new File("webapp/WEB-INF/classes");
         String x = FileUtils.readFileToString(css, StandardCharsets.UTF_8);
         out.println(System.getProperty("user.dir"));
         out.println(printHead());
