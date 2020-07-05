@@ -32,9 +32,6 @@ public class HelloServlet extends HttpServlet {
         out.flush();
         out.close();
     }
-    protected String printStyle(){
-        return
-    }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
