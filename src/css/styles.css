@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 /*!
 * Start Bootstrap - Freelancer v6.0.4 (https://startbootstrap.com/themes/freelancer)
 * Copyright 2013-2020 Start Bootstrap
@@ -65,7 +65,7 @@ body {
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
-  text-align: left;
+  text-align: center;
   background-color: #fff;
 }
 
@@ -82,11 +82,13 @@ hr {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
+  text-align: center;
 }
 
 p {
   margin-top: 0;
   margin-bottom: 1rem;
+  text-align: center;
 }
 
 abbr[title],
@@ -392,6 +394,7 @@ h6, .h6 {
 .lead {
   font-size: 1.25rem;
   font-weight: 300;
+  display: inline-block
 }
 
 .display-1 {
@@ -600,6 +603,7 @@ pre code {
   flex-wrap: wrap;
   margin-right: -1.5rem;
   margin-left: -1.5rem;
+  text-align: center;
 }
 
 .no-gutters {
@@ -622,6 +626,7 @@ pre code {
   width: 100%;
   padding-right: 1.5rem;
   padding-left: 1.5rem;
+  text-align: center;
 }
 
 .col {
@@ -7924,6 +7929,7 @@ button.bg-dark:focus {
 .ml-auto,
 .mx-auto {
   margin-left: auto !important;
+  text-align: center;
 }
 
 @media (min-width: 576px) {
@@ -10258,4 +10264,43 @@ form .row:first-child .floating-label-form-group {
 
 .copyright {
   background-color: #1a252f;
+}
+.demo-bg{
+background: #ffac0c;
+margin-top: 60px;
+}
+.business-hours {
+background: #222; 
+padding: 40px 14px;
+margin-top: -15px;
+position: relative;
+}
+.business-hours:before{
+content: '';
+width: 23px;
+height: 23px;
+background: #111;
+position: absolute;
+top: 5px;
+left: -12px;
+transform: rotate(-45deg);
+z-index: -1;
+}
+.business-hours .title {
+font-size: 20px;
+color: #BBB;
+text-transform: uppercase;
+padding-left: 5px;
+border-left: 4px solid #ffac0c; 
+}
+.business-hours li {
+color: #888;
+line-height: 30px;
+border-bottom: 1px solid #333; 
+}
+.business-hours li:last-child {
+border-bottom: none; 
+}
+.business-hours .opening-hours li.today {
+color: #ffac0c; 
 }
