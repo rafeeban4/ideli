@@ -27,7 +27,7 @@ public class HelloServlet extends HttpServlet {
         //String x = FileUtils.readFileToString(css, StandardCharsets.UTF_8);
         out.println(System.getProperty("user.dir"));
         out.println(printHead());
-        out.println("<style>"+x+"</style>");
+        //out.println("<style>"+x+"</style>");
         out.println(printBody());
         out.println(printTail());
         out.flush();
