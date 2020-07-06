@@ -28,14 +28,14 @@ public class HelloServlet extends HttpServlet {
         //out.println(System.getProperty("user.dir"));
         out.println(printHead());
         out.println("<style>");
-        printStyle();
+        printStyle(out);
         out.println("</style>");
         out.println(printBody());
         out.println(printTail());
         out.flush();
         out.close();
     }
-    protected void printStyle(){
+    protected void printStyle(PrintWriter out){
         out.println(".masthead {\n" +
                 "  padding-top: calc(6rem + 74px);\n" +
                 "  padding-bottom: 6rem;\n" +
