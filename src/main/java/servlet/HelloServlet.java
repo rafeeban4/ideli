@@ -27,12 +27,95 @@ public class HelloServlet extends HttpServlet {
         //String x = FileUtils.readFileToString(css, StandardCharsets.UTF_8);
         //out.println(System.getProperty("user.dir"));
         out.println(printHead());
-        //out.println("<style>"+printStyle()+"</style>");
-        out.println("<link rel='stylesheet' type='text/css' href='http://rafeeban4.github.io/ideli/ideli/styles.css' />");
+        out.println("<style>");
+        printStyle();
+        out.println("</style>");
         out.println(printBody());
         out.println(printTail());
         out.flush();
         out.close();
+    }
+    protected void printStyle(){
+        out.println(".masthead {\n" +
+                "  padding-top: calc(6rem + 74px);\n" +
+                "  padding-bottom: 6rem;\n" +
+                "}\n" +
+                ".masthead .masthead-heading {\n" +
+                "  font-size: 2.75rem;\n" +
+                "  line-height: 2.75rem;\n" +
+                "}\n" +
+                ".masthead .masthead-subheading {\n" +
+                "  font-size: 1.25rem;\n" +
+                "}\n" +
+                ".masthead .masthead-avatar {\n" +
+                "  width: 15rem;\n" +
+                "}");
+        out.println(".bg-primary {\n" +
+                "  background-color: #1abc9c !important;\n" +
+                "}\n" +
+                ".text-white {\n" +
+                "  color: #fff !important;\n" +
+                "}\n" +
+                ".text-center {\n" +
+                "  text-align: center !important;\n" +
+                "}\n" +
+                ".container {\n" +
+                "    min-width: 992px !important;\n" +
+                "}\n" +
+                ".d-flex {\n" +
+                "  display: flex !important;\n" +
+                "}\n" +
+                ".align-items-center {\n" +
+                "  align-items: center !important;\n" +
+                "}\n" +
+                ".flex-column {\n" +
+                "  flex-direction: column !important;\n" +
+                "}\n" +
+                ".text-uppercase {\n" +
+                "  text-transform: uppercase !important;\n" +
+                "}\n" +
+                ".mb-0,\n" +
+                ".my-0 {\n" +
+                "  margin-bottom: 0 !important;\n" +
+                "}\n" +
+                ".divider-custom {\n" +
+                "  margin: 1.25rem 0 1.5rem;\n" +
+                "  width: 100%;\n" +
+                "  display: flex;\n" +
+                "  justify-content: center;\n" +
+                "  align-items: center;\n" +
+                "}\n" +
+                ".divider-custom .divider-custom-line {\n" +
+                "  width: 100%;\n" +
+                "  max-width: 7rem;\n" +
+                "  height: 0.25rem;\n" +
+                "  background-color: #2c3e50;\n" +
+                "  border-radius: 1rem;\n" +
+                "  border-color: #2c3e50 !important;\n" +
+                "}\n" +
+                ".divider-custom .divider-custom-line:first-child {\n" +
+                "  margin-right: 1rem;\n" +
+                "}\n" +
+                ".divider-custom .divider-custom-line:last-child {\n" +
+                "  margin-left: 1rem;\n" +
+                "}\n" +
+                ".divider-custom .divider-custom-icon {\n" +
+                "  color: #2c3e50 !important;\n" +
+                "  font-size: 2rem;\n" +
+                "}\n" +
+                ".divider-custom.divider-light .divider-custom-line {\n" +
+                "  background-color: #fff;\n" +
+                "}\n" +
+                ".divider-custom.divider-light .divider-custom-icon {\n" +
+                "  color: #fff !important;\n" +
+                "}\n" +
+                ".font-weight-light {\n" +
+                "  font-weight: 300 !important;\n" +
+                "}\n");
+        out.println("");
+        out.println("");
+        out.println("");
+        out.println("");
     }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
