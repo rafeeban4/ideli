@@ -112,10 +112,6 @@ public class HelloServlet extends HttpServlet {
                 ".font-weight-light {\n" +
                 "  font-weight: 300 !important;\n" +
                 "}\n");
-        out.println("");
-        out.println("");
-        out.println("");
-        out.println("");
     }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
