@@ -29,6 +29,13 @@ public class HelloServlet extends HttpServlet {
         out.println(printHead());
         out.println("<style>");
         printStyle(out);
+        out.println("");
+        out.println("");
+        out.println("");
+        out.println("");
+        out.println("");
+        out.println("");
+        out.println("");
         out.println("</style>");
         out.println(printBody());
         out.println(printTail());
@@ -36,6 +43,97 @@ public class HelloServlet extends HttpServlet {
         out.close();
     }
     protected void printStyle(PrintWriter out){
+        out.println(":root {\n" +
+                "  --blue: #007bff;\n" +
+                "  --indigo: #6610f2;\n" +
+                "  --purple: #6f42c1;\n" +
+                "  --pink: #e83e8c;\n" +
+                "  --red: #dc3545;\n" +
+                "  --orange: #fd7e14;\n" +
+                "  --yellow: #ffc107;\n" +
+                "  --green: #28a745;\n" +
+                "  --teal: #1abc9c;\n" +
+                "  --cyan: #17a2b8;\n" +
+                "  --white: #fff;\n" +
+                "  --gray: #6c757d;\n" +
+                "  --gray-dark: #343a40;\n" +
+                "  --primary: #1abc9c;\n" +
+                "  --secondary: #2c3e50;\n" +
+                "  --success: #28a745;\n" +
+                "  --info: #17a2b8;\n" +
+                "  --warning: #ffc107;\n" +
+                "  --danger: #dc3545;\n" +
+                "  --light: #f8f9fa;\n" +
+                "  --dark: #343a40;\n" +
+                "  --breakpoint-xs: 0;\n" +
+                "  --breakpoint-sm: 576px;\n" +
+                "  --breakpoint-md: 768px;\n" +
+                "  --breakpoint-lg: 992px;\n" +
+                "  --breakpoint-xl: 1200px;\n" +
+                "  --font-family-sans-serif: \"Lato\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\";\n" +
+                "  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace;\n" +
+                "}\n" +
+                "\n" +
+                "*,\n" +
+                "*::before,\n" +
+                "*::after {\n" +
+                "  box-sizing: border-box;\n" +
+                "}\n" +
+                "\n" +
+                "html {\n" +
+                "  font-family: sans-serif;\n" +
+                "  line-height: 1.15;\n" +
+                "  -webkit-text-size-adjust: 100%;\n" +
+                "  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n" +
+                "}\n" +
+                "\n" +
+                "article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {\n" +
+                "  display: block;\n" +
+                "}\n" +
+                "\n" +
+                "body {\n" +
+                "  margin: 0;\n" +
+                "  font-family: \"Lato\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\";\n" +
+                "  font-size: 1rem;\n" +
+                "  font-weight: 400;\n" +
+                "  line-height: 1.5;\n" +
+                "  color: #212529;\n" +
+                "  text-align: center;\n" +
+                "  background-color: #fff;\n" +
+                "}\n" +
+                "\n" +
+                "[tabindex=\"-1\"]:focus:not(:focus-visible) {\n" +
+                "  outline: 0 !important;\n" +
+                "}\n" +
+                "\n" +
+                "hr {\n" +
+                "  box-sizing: content-box;\n" +
+                "  height: 0;\n" +
+                "  overflow: visible;\n" +
+                "}\n" +
+                "\n" +
+                "h1, h2, h3, h4, h5, h6 {\n" +
+                "  margin-top: 0;\n" +
+                "  margin-bottom: 0.5rem;\n" +
+                "  text-align: center;\n" +
+                "}\n" +
+                "\n" +
+                "p {\n" +
+                "  margin-top: 0;\n" +
+                "  margin-bottom: 1rem;\n" +
+                "  text-align: center;\n" +
+                "}\n" +
+                "\n" +
+                "abbr[title],\n" +
+                "abbr[data-original-title] {\n" +
+                "  text-decoration: underline;\n" +
+                "  -webkit-text-decoration: underline dotted;\n" +
+                "          text-decoration: underline dotted;\n" +
+                "  cursor: help;\n" +
+                "  border-bottom: 0;\n" +
+                "  -webkit-text-decoration-skip-ink: none;\n" +
+                "          text-decoration-skip-ink: none;\n" +
+                "}");
         out.println(".masthead {\n" +
                 "  padding-top: calc(6rem + 74px);\n" +
                 "  padding-bottom: 6rem;\n" +
