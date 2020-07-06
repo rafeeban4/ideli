@@ -422,7 +422,7 @@ public class HelloServlet extends HttpServlet {
                 "        <link href=\"https://fonts.googleapis.com/css?family=Montserrat:400,700\" rel=\"stylesheet\" type=\"text/css\" />\n" +
                 "        <link href=\"https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic\" rel=\"stylesheet\" type=\"text/css\" />\n" +
                 "        <!-- Core theme CSS (includes Bootstrap)-->\n" +
-                "        <link href=\"<%=request.getContextPath()%>/resources/styles.css\" rel=\"stylesheet\" type=\"text/css\" />"+
+                "        <link href=\"styles.css\" rel=\"stylesheet\" type=\"text/css\" />"+
                 "    </head>";
     }
     protected String printBody(){
