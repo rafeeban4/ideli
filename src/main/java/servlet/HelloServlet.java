@@ -20,23 +20,9 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
-        //File css = new File("webapp/WEB-INF/classes");
-        //String x = FileUtils.readFileToString(css, StandardCharsets.UTF_8);
-        //out.println(System.getProperty("user.dir"));
         out.println(printHead());
-        out.println("<style>");
-        printStyle(out);
-        out.println("");
-        out.println("");
-        out.println("");
-        out.println("");
-        out.println("");
-        out.println("");
-        out.println("");
-        out.println("</style>");
         out.println(printBody());
         out.println(printTail());
         out.flush();
