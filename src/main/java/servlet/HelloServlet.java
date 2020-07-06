@@ -112,6 +112,190 @@ public class HelloServlet extends HttpServlet {
                 ".font-weight-light {\n" +
                 "  font-weight: 300 !important;\n" +
                 "}\n");
+        out.println(".page-section {\n" +
+                "  padding: 6rem 0;\n" +
+                "}\n" +
+                ".page-section .page-section-heading {\n" +
+                "  font-size: 2.25rem;\n" +
+                "  line-height: 2rem;\n" +
+                "}\n" +
+                ".portfolio .portfolio-item {\n" +
+                "  cursor: pointer;\n" +
+                "  position: relative;\n" +
+                "  display: block;\n" +
+                "  max-width: 25rem;\n" +
+                "  border-radius: 0.5rem;\n" +
+                "  overflow: hidden;\n" +
+                "}\n" +
+                ".portfolio .portfolio-item .portfolio-item-caption {\n" +
+                "  position: absolute;\n" +
+                "  top: 0;\n" +
+                "  left: 0;\n" +
+                "  transition: all 0.2s ease-in-out;\n" +
+                "  opacity: 0;\n" +
+                "  background-color: rgba(26, 188, 156, 0.9);\n" +
+                "}\n" +
+                ".portfolio .portfolio-item .portfolio-item-caption:hover {\n" +
+                "  opacity: 1;\n" +
+                "}\n" +
+                ".portfolio .portfolio-item .portfolio-item-caption .portfolio-item-caption-content {\n" +
+                "  font-size: 1.5rem;\n" +
+                "}\n" +
+                "\n" +
+                ".portfolio-modal .portfolio-modal-title {\n" +
+                "  font-size: 2.25rem;\n" +
+                "  line-height: 2rem;\n" +
+                "}\n" +
+                ".text-secondary {\n" +
+                "  color: #2c3e50 !important;\n" +
+                "}\n" +
+                ".row {\n" +
+                "  display: flex;\n" +
+                "  flex-wrap: wrap;\n" +
+                "  margin-right: -1.5rem;\n" +
+                "  margin-left: -1.5rem;\n" +
+                "  text-align: center;\n" +
+                "}\n" +
+                ".lead {\n" +
+                "  font-size: 1.25rem;\n" +
+                "  font-weight: 300;\n" +
+                "  display: inline-block\n" +
+                "}\n" +
+                ".col-xl,\n" +
+                ".col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg,\n" +
+                ".col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,\n" +
+                ".col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,\n" +
+                ".col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,\n" +
+                ".col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {\n" +
+                "  position: relative;\n" +
+                "  width: 100%;\n" +
+                "  padding-right: 1.5rem;\n" +
+                "  padding-left: 1.5rem;\n" +
+                "  text-align: center;\n" +
+                "}\n" +
+                ".col {\n" +
+                "  flex-basis: 0;\n" +
+                "  flex-grow: 1;\n" +
+                "  min-width: 0;\n" +
+                "  max-width: 100%;\n" +
+                "}\n" +
+                ".bg-primary {\n" +
+                "  background-color: #1abc9c !important;\n" +
+                "}");
+        out.println(".business-hours {\n" +
+                "background: #222; \n" +
+                "padding: 40px 14px;\n" +
+                "margin-top: -15px;\n" +
+                "position: relative;\n" +
+                "}\n" +
+                ".business-hours:before{\n" +
+                "content: '';\n" +
+                "width: 23px;\n" +
+                "height: 23px;\n" +
+                "background: #111;\n" +
+                "position: absolute;\n" +
+                "top: 5px;\n" +
+                "left: -12px;\n" +
+                "transform: rotate(-45deg);\n" +
+                "z-index: -1;\n" +
+                "}\n" +
+                ".business-hours .title {\n" +
+                "font-size: 20px;\n" +
+                "color: #BBB;\n" +
+                "text-transform: uppercase;\n" +
+                "padding-left: 5px;\n" +
+                "border-left: 4px solid #ffac0c; \n" +
+                "}\n" +
+                ".business-hours li {\n" +
+                "color: #888;\n" +
+                "line-height: 30px;\n" +
+                "border-bottom: 1px solid #333; \n" +
+                "}\n" +
+                ".business-hours li:last-child {\n" +
+                "border-bottom: none; \n" +
+                "}\n" +
+                ".business-hours .opening-hours li.today {\n" +
+                "color: #ffac0c; \n" +
+                "}\n" +
+                ".footer {\n" +
+                "  padding-top: 5rem;\n" +
+                "  padding-bottom: 5rem;\n" +
+                "  background-color: #2c3e50;\n" +
+                "  color: #fff;\n" +
+                "}\n" +
+                "\n" +
+                ".copyright {\n" +
+                "  background-color: #1a252f;\n" +
+                "}\n" +
+                ".demo-bg{\n" +
+                "background: #ffac0c;\n" +
+                "margin-top: 60px;\n" +
+                "}\n" +
+                ".mb-lg-0,\n" +
+                ".my-lg-0 {\n" +
+                "    margin-bottom: 0 !important;\n" +
+                "  }\n" +
+                ".mb-5,\n" +
+                ".my-5 {\n" +
+                "  margin-bottom: 3rem !important;\n" +
+                "}\n" +
+                ".mb-4,\n" +
+                ".my-4 {\n" +
+                "  margin-bottom: 1.5rem !important;\n" +
+                "}\n" +
+                ".pb-5,\n" +
+                ".py-5 {\n" +
+                "  padding-bottom: 3rem !important;\n" +
+                "}\n" +
+                ".scroll-to-top {\n" +
+                "  z-index: 1042;\n" +
+                "  right: 1rem;\n" +
+                "  bottom: 1rem;\n" +
+                "  display: none;\n" +
+                "}\n" +
+                ".scroll-to-top a {\n" +
+                "  width: 3.5rem;\n" +
+                "  height: 3.5rem;\n" +
+                "  background-color: rgba(33, 37, 41, 0.5);\n" +
+                "  line-height: 3.1rem;\n" +
+                "}\n" +
+                ".d-lg-none {\n" +
+                "    display: none !important;\n" +
+                "}\n" +
+                ".position-fixed {\n" +
+                "  position: fixed !important;\n" +
+                "}\n" +
+                ".d-none {\n" +
+                "  display: none !important;\n" +
+                "}\n" +
+                "\n" +
+                ".d-inline {\n" +
+                "  display: inline !important;\n" +
+                "}\n" +
+                "\n" +
+                ".d-inline-block {\n" +
+                "  display: inline-block !important;\n" +
+                "}\n" +
+                "\n" +
+                ".d-block {\n" +
+                "  display: block !important;\n" +
+                "}\n" +
+                "\n" +
+                ".d-table {\n" +
+                "  display: table !important;\n" +
+                "}\n" +
+                ".rounded-sm {\n" +
+                "  border-radius: 0.25rem !important;\n" +
+                "}\n" +
+                "\n" +
+                ".rounded {\n" +
+                "  border-radius: 0.5rem !important;\n" +
+                "}\n" +
+                "\n" +
+                ".rounded-top {\n" +
+                "  border-top-left-radius: 0.5rem !important;\n" +
+                "  border-top-right-radius: 0.5rem !important;\n" +
+                "}");
     }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
