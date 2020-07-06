@@ -5,6 +5,7 @@
   <artifactId>embeddedTomcatSample</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
+<resources mapping="/resources/**" location="/resources/" />
   <name>embeddedTomcatSample Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
