@@ -168,7 +168,7 @@ public class HelloServlet extends HttpServlet {
                 "        <!-- Copyright Section-->\n" +
                 "        <div class=\"copyright py-4 text-center text-white\">\n" +
                 "            <div class=\"container\"><small>Copyright © IDeli 2020</small></div>\n" +
-                "<              button type=\"button\" class=\"btn btn-primary\" onClick=\"window.location.assign(window.location.origin+\\\"/admin\\\")\">Admin</button>" +
+                //"< button type=\"button\" class=\"btn btn-primary\" onClick=\"window.location.assign(window.location.origin+\\\"/admin\\\")\">Admin</button>" +
                 "        </div>\n" +
                 "        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->\n" +
                 "        <div class=\"scroll-to-top d-lg-none position-fixed\">\n" +
