@@ -12,8 +12,8 @@ import java.nio.charset.*;
 
 
 @WebServlet(
-        name = "MyServlet",
-        urlPatterns = {"/admin"}
+        name = "AdminServlet",
+        urlPatterns = {"/administrator"}
 )
 
 public class adminServlet extends HttpServlet {
