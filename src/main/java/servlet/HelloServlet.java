@@ -166,15 +166,20 @@ public class HelloServlet extends HttpServlet {
                 "            </div>\n" +
                 "        </footer>\n" +
                 "        <!-- Copyright Section-->\n" +
+                "        <!-- Copyright Section-->\n" +
                 "        <div class=\"copyright py-4 text-center text-white\">\n" +
                 "            <div class=\"container\"><small>Copyright © IDeli 2020</small></div>\n" +
-                "< button type=\"button\" class=\"btn btn-primary\" onClick=\"window.location.assign(window.location.origin+\"/administrator\")\">Admin</button>" +
+                "            <button type=\"button\" class=\"btn btn-primary\" onClick=\"openAdmin()\">Admin</button>\n" +
                 "        </div>\n" +
                 "        <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->\n" +
                 "        <div class=\"scroll-to-top d-lg-none position-fixed\">\n" +
                 "            <a class=\"js-scroll-trigger d-block text-center text-white rounded\" href=\"#page-top\"><i class=\"fa fa-chevron-up\"></i></a>\n" +
                 "        </div>\n" +
-                "\n" +
+                "        <script>\n" +
+                "          function openAdmin() {\n" +
+                "            window.location.assign(window.location.origin+\"/administrator\");\n" +
+                "          }\n" +
+                "        </script>\n" +
                 "    </body>";
     }
     protected String printTail(){
