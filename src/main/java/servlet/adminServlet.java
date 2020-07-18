@@ -49,7 +49,7 @@ public class adminServlet extends HttpServlet {
         FindIterable<Document> data = collection.find();
         boolean match = false;
         for (Document doc : data) {
-            if (doc.get("user").equals(x) && doc.get("pass").equals(y)) {
+            if (doc.get("user") != null && doc.get("user").equals(x) && doc.get("pass").equals(y)) {
                 match = true;
                 updateLoggedIn();
             }
