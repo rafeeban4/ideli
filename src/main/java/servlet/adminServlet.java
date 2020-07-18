@@ -134,8 +134,8 @@ public class adminServlet extends HttpServlet {
     protected String printScript() {
         return   "        <script>\n"+
                 "  function checkLogin(){\n" +
-                "              let user = jQuery('#login');\n" +
-                "              let pass = jQuery('#password');\n" +
+                "              let user = jQuery('#login').val();\n" +
+                "              let pass = jQuery('#password').val();\n" +
                 "              jQuery.post( 'https://ideli.herokuapp.com/administrator', {user: user, pass: pass}, function( data ) {\n" +
                 "                  if (data.includes('wrong_user'))\n" +
                 "                      alert('Wrong User!!!');\n" +
