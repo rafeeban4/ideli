@@ -100,7 +100,7 @@ public class editServlet extends HttpServlet {
         FindIterable<Document> data = collection.find();
         for (Document x : data) {
             s.append("<div class=\"row text-center\">\n" +
-                    "                    <div class=\"col-sm-12 \"><p class=\"lead\" id=\""+x.get("_id")+"\" onclick=\"deleteText(event)\">");
+                    "                    <div class=\"col-sm-12 \"><p class=\"lead\" id=\""+x.get("_id")+"\" onclick=\"deleteText(event);event.preventDefault();\">");
 
             s.append(x.get("content")+"</p></div>\n" +
                     "                </div>\n");
@@ -161,7 +161,7 @@ public class editServlet extends HttpServlet {
                 "                <div class=\"divider-custom\">\n" +
                 "                   <form accept-charset=utf-8>\n" +
                 "                       <input type=\"text\" id=\"text\" class=\"fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
-                "                       <input type=\"submit\" class=\"fadeIn fourth\" onclick=\"addText()\">\n" +
+                "                       <input type=\"submit\" class=\"fadeIn fourth\" onclick=\"addText();event.preventDefault();\">\n" +
                 "                   </form>" +
                 "                </div>\n";
 
