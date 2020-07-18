@@ -68,7 +68,7 @@ public class editServlet extends HttpServlet {
         }
     }
     protected void addAnnounce(String text){
-        Document document = new Document();
+
         String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
         MongoClientURI clientURI = new MongoClientURI(uri);
         MongoClient mongoClient = new MongoClient(clientURI);
@@ -77,7 +77,7 @@ public class editServlet extends HttpServlet {
         MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
         MongoCollection collection = mongoDatabase.getCollection("announcements");
         // Insert request parameters into the document
-
+        Document document = new Document();
         document.append("content", text);
 
         // Insert document into the database
@@ -200,7 +200,7 @@ public class editServlet extends HttpServlet {
                 "                <!-- Icon Divider-->\n" +
                 "                <div class=\"divider-custom\">\n" +
                 "                   <form accept-charset=utf-8>\n" +
-                "                       <input  type=\"text\" style=id=\"text\" class=\"form-control form-control-lg fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
+                "                       <input  type=\"text\" id=\"text\" class=\"form-control form-control-lg fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
                 "                       <input type=\"submit\" value=\"Add Announcement\" class=\"fadeIn fourth\" onclick=\"addText();event.preventDefault();\">\n" +
                 "                   </form>" +
                 "                </div>\n";
