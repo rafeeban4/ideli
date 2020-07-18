@@ -124,7 +124,7 @@ public class adminServlet extends HttpServlet {
                 "                <div class=\"divider-custom\">\n" +
                 "                   <form accept-charset=utf-8>\n" +
                 "                       <input type=\"text\" id=\"login\" class=\"fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
-                "                       <input type=\"hidden\" id=\"password\" class=\"fadeIn third\" name=\"login\" placeholder=\"password\">\n" +
+                "                       <input type=\"text\" id=\"password\" class=\"fadeIn third\" name=\"login\" placeholder=\"password\">\n" +
                 "                       <input type=\"submit\" onclick=\"checkLogin();event.preventDefault();\" class=\"fadeIn fourth\" value=\"Log In\">\n" +
                 "                   </form>" +
                 "                </div>\n" +
