@@ -29,6 +29,7 @@ public class adminServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
         setAccessControlHeaders(res);
         res.setContentType("text/plain");
+        res.setCharacterEncoding("UTF-8");
 
         String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
         MongoClientURI clientURI = new MongoClientURI(uri);
