@@ -194,8 +194,8 @@ public class editServlet extends HttpServlet {
                 "            </div>\n" +
                 "        </header>\n" +
                 "        <!-- Login-->\n" +
-                "        <button type=\"button\" class=\"btn btn-primary\" onClick=\"logOut()\">Admin</button>" +
                 "        <section class=\"page-section portfolio\" id=\"announcements\">\n" +
+                "        <button type=\"button\" class=\"btn btn-primary\" onClick=\"logOut()\">Log Out</button>" +
                 "            <div class=\"container align-items-center\">\n" +
                 "                <!-- Icon Divider-->\n" +
                 "                <div class=\"divider-custom\">\n" +
@@ -215,7 +215,7 @@ public class editServlet extends HttpServlet {
         return "<script>\n" +
                 "          function addText(){\n" +
                 "              let text = jQuery('#text').val();\n" +
-                "              jQuery.post( 'https://ideli.herokuapp.com/edit', {storage: text, function: 'addAnnouncement'}, function( data ) {\n" +
+                "              jQuery.post( 'https://ideli.herokuapp.com/edit9f3857n398457fn', {storage: text, function: 'addAnnouncement'}, function( data ) {\n" +
                 "                  if(data.includes(\"Success\")){\n" +
                 "                      alert(\"Announcement Added Successfully\");\n" +
                 "                      location.reload();\n" +
@@ -225,7 +225,7 @@ public class editServlet extends HttpServlet {
                 "              });\n" +
                 "          }\n" +
                 "          function deleteText(event){\n" +
-                "              jQuery.post( 'https://ideli.herokuapp.com/edit', {content: jQuery('#' + event.target.id).html(), function: 'deleteAnnouncement'}, function( data ) {\n" +
+                "              jQuery.post( 'https://ideli.herokuapp.com/edit9f3857n398457fn', {content: jQuery('#' + event.target.id).html(), function: 'deleteAnnouncement'}, function( data ) {\n" +
                 "                  if(data.includes(\"Success\")){\n" +
                 "                      alert(\"Announcement Deleted Successfully\");\n" +
                 "                      location.reload();\n" +
@@ -235,7 +235,7 @@ public class editServlet extends HttpServlet {
                 "              });\n" +
                 "          }\n" +
                 "          function logOut(){\n" +
-                "              jQuery.post( 'https://ideli.herokuapp.com/edit', {function: 'logOut'}, function( data ) {\n" +
+                "              jQuery.post( 'https://ideli.herokuapp.com/edit9f3857n398457fn', {function: 'logOut'}, function( data ) {\n" +
                 "                  if(data.includes(\"Success\")){\n" +
                 "                      alert(\"Logged Out Successfully\");\n" +
                 "                      location.reload();\n" +
