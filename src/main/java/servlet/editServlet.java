@@ -12,11 +12,11 @@ import java.nio.charset.*;
 
 
 @WebServlet(
-        name = "AdminServlet",
-        urlPatterns = {"/administrator"}
+        name = "EditServlet",
+        urlPatterns = {"/edit"}
 )
 
-public class adminServlet extends HttpServlet {
+public class editServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {

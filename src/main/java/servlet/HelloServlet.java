@@ -9,6 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.io.*;
 import java.nio.charset.*;
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import org.bson.Document;
+import javax.servlet.http.HttpServletRequest;
 
 
 @WebServlet(
@@ -24,9 +31,29 @@ public class HelloServlet extends HttpServlet {
         PrintWriter out = res.getWriter();
         out.println(printHead());
         out.println(printBody());
+        out.println(announcements());
+        out.println(printBody2());
         out.println(printTail());
         out.flush();
         out.close();
+    }
+    protected String announcements(){
+        String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
+        MongoClientURI clientURI = new MongoClientURI(uri);
+        MongoClient mongoClient = new MongoClient(clientURI);
+
+        // Connect to database and connection
+        MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
+        MongoCollection collection = mongoDatabase.getCollection("announcements");
+        String s = "";
+        FindIterable<Document> data = collection.find();
+        for (Document x : data) {
+            s.concat("<div class=\"row text-center\">\n" +
+                    "                    <div class=\"col-sm-12 \"><p class=\"lead\">");
+            s.concat(x.getString("content")+"</p></div>\n" +
+                    "                </div>\n");
+        }
+        return s;
     }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
@@ -86,11 +113,10 @@ public class HelloServlet extends HttpServlet {
                 "                    <div class=\"divider-custom-icon\"><i class=\"fas fa-star\"></i></div>\n" +
                 "                    <div class=\"divider-custom-line\"></div>\n" +
                 "                </div>\n" +
-                "                <!-- Announcements Section Content-->\n" +
-                "                <div class=\"row text-center\">\n" +
-                "                    <div class=\"col-sm-12 \"><p class=\"lead\">Announcements Here</p></div>\n" +
-                "                </div>\n" +
-                "            </div>\n" +
+                "                <!-- Announcements Section Content-->\n";
+    }
+    protected String printBody2(){
+        return  "            </div>\n" +
                 "        </section>\n" +
                 "\n" +
                 "        <!-- About Section-->\n" +
