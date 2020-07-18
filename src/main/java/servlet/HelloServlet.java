@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.io.*;
 import java.nio.charset.*;
 import com.mongodb.MongoClient;
@@ -47,15 +48,15 @@ public class HelloServlet extends HttpServlet {
         // Connect to database and connection
         MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
         MongoCollection collection = mongoDatabase.getCollection("announcements");
-        String s = "";
+        StringBuilder s = new StringBuilder();
         FindIterable<Document> data = collection.find();
         for (Document x : data) {
-            s.concat("<div class=\"row text-center\">\n" +
+            s.append("<div class=\"row text-center\">\n" +
                     "                    <div class=\"col-sm-12 \"><p class=\"lead\">");
-            s.concat(x.get("content")+"</p></div>\n" +
+            s.append(x.get("content")+"</p></div>\n" +
                     "                </div>\n");
         }
-        return s;
+        return s.toString();
     }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +

@@ -16,16 +16,14 @@ public class temp {
         // Connect to database and connection
         MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
         MongoCollection collection = mongoDatabase.getCollection("announcements");
-        String s = "";
+        StringBuilder s = new StringBuilder();
         FindIterable<Document> data = collection.find();
         for (Document x : data) {
-            System.out.println(x.get("content"));
-            s.concat("<div class=\"row text-center\">\n" +
+            s.append("<div class=\"row text-center\">\n" +
                     "                    <div class=\"col-sm-12 \"><p class=\"lead\">");
-            s.concat(x.getString("content")+"</p></div>\n" +
+            s.append(x.get("content")+"</p></div>\n" +
                     "                </div>\n");
         }
-        System.out.println(s);
-        System.out.println(data);
+        System.out.println(s.toString());
     }
 }
