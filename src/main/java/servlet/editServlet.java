@@ -48,6 +48,9 @@ public class editServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
+        setAccessControlHeaders(res);
+        res.setContentType("text/plain");
+        res.setCharacterEncoding("UTF-8");
         if(isLoggedIn()){
             res.setContentType("text/html");
             PrintWriter out = res.getWriter();
