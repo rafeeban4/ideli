@@ -51,7 +51,7 @@ public class editServlet extends HttpServlet {
         setAccessControlHeaders(res);
         res.setContentType("text/plain");
         res.setCharacterEncoding("UTF-8");
-        if(true){
+        if(isLoggedIn()){
             res.setContentType("text/html");
             PrintWriter out = res.getWriter();
             out.println(printHead());
@@ -120,14 +120,13 @@ public class editServlet extends HttpServlet {
         MongoCollection collection = mongoDatabase.getCollection("login");
 
         FindIterable<Document> docs = collection.find();
+        boolean ret = false;
         for(Document doc: docs) {
             if (doc.get("logged in") != null &&doc.get("logged in").equals("true")){
-                return true;
-            }else{
-                return false;
+                ret=  true;
             }
         }
-        return false;
+        return ret;
     }
 
     protected String printHead(){

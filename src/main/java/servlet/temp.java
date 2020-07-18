@@ -22,9 +22,16 @@ public class temp {
         MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
         MongoCollection collection = mongoDatabase.getCollection("login");
 
-        Bson filter = eq("logged in", "false");
-        Bson updateOperation = set("logged in", "true");
-        UpdateResult updateResult = collection.updateOne(filter, updateOperation);
 
+        FindIterable<Document> docs = collection.find();
+        for (Document doc : docs) {
+            if (doc.get("logged in") != null && doc.get("logged in").equals("true")) {
+                System.out.println(true);
+            } else {
+                System.out.println(false);
+            }
+        }
+        System.out.println(false);
     }
 }
+
