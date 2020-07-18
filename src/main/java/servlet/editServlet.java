@@ -7,7 +7,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import org.apache.commons.io.*;
+import org.bson.Document;
+
 import java.nio.charset.*;
 
 
@@ -18,15 +26,85 @@ import java.nio.charset.*;
 
 public class editServlet extends HttpServlet {
     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        setAccessControlHeaders(res);
+        res.setContentType("text/plain");
+        res.setCharacterEncoding("UTF-8");
+
+        String function = req.getParameter("function");
+        if(function.equals("addAnnouncement"))
+            addAnnounce(req.getParameter("storage"));
+        else if (function.equals("deleteAnnouncement"))
+            deleteAnnounce(req.getParameter("_id"));
+
+        PrintWriter out = res.getWriter();
+        out.flush();
+        out.close();
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
         out.println(printHead());
         out.println(printBody());
+        out.println(announcements());
         out.println(printTail());
         out.flush();
         out.close();
+    }
+    protected void addAnnounce(String text){
+        Document document = new Document();
+        String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
+        MongoClientURI clientURI = new MongoClientURI(uri);
+        MongoClient mongoClient = new MongoClient(clientURI);
+
+        // Connect to database and connection
+        MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
+        MongoCollection collection = mongoDatabase.getCollection("announcements");
+        // Insert request parameters into the document
+
+        document.append("content", text);
+
+        // Insert document into the database
+        collection.insertOne(document);
+    }
+    protected void deleteAnnounce(String text){
+        String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
+        MongoClientURI clientURI = new MongoClientURI(uri);
+        MongoClient mongoClient = new MongoClient(clientURI);
+
+        // Connect to database and connection
+        MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
+        MongoCollection collection = mongoDatabase.getCollection("announcements");
+        // Insert request parameters into the document
+        FindIterable<Document> data = collection.find();
+        for (Document x : data) {
+           if(x.get("_id").equals(text)){
+               collection.deleteOne(x);
+           }
+        }
+
+    }
+    protected String announcements(){
+        String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
+        MongoClientURI clientURI = new MongoClientURI(uri);
+        MongoClient mongoClient = new MongoClient(clientURI);
+
+        // Connect to database and connection
+        MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
+        MongoCollection collection = mongoDatabase.getCollection("announcements");
+        StringBuilder s = new StringBuilder();
+        FindIterable<Document> data = collection.find();
+        for (Document x : data) {
+            s.append("<div class=\"row text-center\">\n" +
+                    "                    <div class=\"col-sm-12 \"><p class=\"lead\" id=\""+x.get("_id")+"\" onclick=\"deleteText(event)\">");
+
+            s.append(x.get("content")+"</p></div>\n" +
+                    "                </div>\n");
+        }
+        return s.toString();
     }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
@@ -81,17 +159,46 @@ public class editServlet extends HttpServlet {
                 "                <!-- Icon Divider-->\n" +
                 "                <div class=\"divider-custom\">\n" +
                 "                   <form>\n" +
-                "                       <input type=\"text\" id=\"login\" class=\"fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
-                "                       <input type=\"text\" id=\"password\" class=\"fadeIn third\" name=\"login\" placeholder=\"password\">\n" +
-                "                       <input type=\"submit\" class=\"fadeIn fourth\" value=\"Log In\">\n" +
+                "                       <input type=\"text\" id=\"text\" class=\"fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
+                "                       <input type=\"submit\" class=\"fadeIn fourth\" onclick=\"addText()\">\n" +
                 "                   </form>" +
-                "                </div>\n" +
-                "            </div>\n" +
-                "        </section>\n" +
-                "\n" +
-                "    </body>";
+                "                </div>\n";
+
     }
     protected String printTail(){
-        return "</html>";
+        return "            </div>\n" +
+                "        </section>\n" +
+                "\n"+printScript()+"    </body>\n"+"</html>";
     }
+    protected String printScript(){
+        return "<script>\n" +
+                "          function addText(){\n" +
+                "              let text = jQuery('#text').val();\n" +
+                "              jQuery.post( 'https://ideli.herokuapp.com/edit', {storage: text, function: 'addAnnouncement'}, function( data ) {\n" +
+                "                  if(data.includes(\"Success\")){\n" +
+                "                      alert(\"Announcement Added Successfully\");\n" +
+                "                  }else{\n" +
+                "                      alert(\"ERROR\")\n" +
+                "                  }\n" +
+                "              });\n" +
+                "          }\n" +
+                "          function deleteText(event){\n" +
+                "              jQuery.post( 'https://ideli.herokuapp.com/edit', {_id: event.target.id, function: 'deleteAnnouncement'}, function( data ) {\n" +
+                "                  if(data.includes(\"Success\")){\n" +
+                "                      alert(\"Announcement Deleted Successfully\");\n" +
+                "                  }else{\n" +
+                "                      alert(\"ERROR\")\n" +
+                "                  }\n" +
+                "              });\n" +
+                "          }\n" +
+                "        </script>";
+    }
+
+    private void setAccessControlHeaders(HttpServletResponse response) {
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.addHeader("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token");
+        response.addHeader("Access-Control-Max-Age", "1728000");
+    }
+
 }

@@ -103,6 +103,25 @@
                   }
               })
           }
+          function addText(){
+              let text = jQuery('#text').val();
+              jQuery.post( 'https://ideli.herokuapp.com/edit', {storage: text, function: 'addAnnouncement'}, function( data ) {
+                  if(data.includes("Success")){
+                      alert("Announcement Added Successfully");
+                  }else{
+                      alert("ERROR")
+                  }
+              });
+          }
+          function deleteText(event){
+              jQuery.post( 'https://ideli.herokuapp.com/edit', {_id: event.target.id, function: 'deleteAnnouncement'}, function( data ) {
+                  if(data.includes("Success")){
+                      alert("Announcement Deleted Successfully");
+                  }else{
+                      alert("ERROR")
+                  }
+              });
+          }
         </script>
     </body>
 </html>
