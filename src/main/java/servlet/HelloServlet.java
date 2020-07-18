@@ -52,10 +52,10 @@ public class HelloServlet extends HttpServlet {
         for (Document x : data) {
             s.concat("<div class=\"row text-center\">\n" +
                     "                    <div class=\"col-sm-12 \"><p class=\"lead\">");
-            s.concat(x.getString("content")+"</p></div>\n" +
+            s.concat(x.get("content")+"</p></div>\n" +
                     "                </div>\n");
         }
-        return collection.find().toString();
+        return s;
     }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
