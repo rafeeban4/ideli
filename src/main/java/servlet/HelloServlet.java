@@ -102,7 +102,7 @@ public class HelloServlet extends HttpServlet {
                 "                    <div class=\"divider-custom-line\"></div>\n" +
                 "                </div>\n" +
                 "                <!-- Masthead Subheading-->\n" +
-                "                <p class=\"masthead-subheading font-weight-light mb-0\">Quick Way Food Mart, Rani's Indian Deli, Convenience Store</p>\n" +
+                "                <p class=\"masthead-subheading font-weight-light mb-0\">Convenience Store</p>\n" +
                 "            </div>\n" +
                 "        </header>\n" +
                 "        <!-- Announcements Section-->\n" +
@@ -155,13 +155,13 @@ public class HelloServlet extends HttpServlet {
                 "                    <div class=\"col-sm-4\">\n" +
                 "                        <div class=\"business-hours\">\n" +
                 "                            <ul class=\"list-unstyled opening-hours\">\n" +
-                "                                <li>Monday <span class=\"pull-right \">9:00 AM - 9:00 PM</span></li>\n" +
-                "                                <li>Tuesday <span class=\"pull-right\">9:00 AM - 9:00 PM</span></li>\n" +
-                "                                <li>Wednesday <span class=\"pull-right\">9:00 AM - 9:00 PM</span></li>\n" +
-                "                                <li>Thursday <span class=\"pull-right\">9:00 AM - 9:00 PM</span></li>\n" +
-                "                                <li>Friday <span class=\"pull-right\">9:00 AM - 9:00 PM</span></li>\n" +
-                "                                <li>Saturday <span class=\"pull-right\">12:00 PM - 9:00 PM</span></li>\n" +
-                "                                <li>Sunday <span class=\"pull-right\">12:00 PM - 9:00 PM</span></li>\n" +
+                "                                <li>Monday <span class=\"pull-right \">10:00 AM - 9:00 PM</span></li>\n" +
+                "                                <li>Tuesday <span class=\"pull-right\">10:00 AM - 9:00 PM</span></li>\n" +
+                "                                <li>Wednesday <span class=\"pull-right\">10:00 AM - 9:00 PM</span></li>\n" +
+                "                                <li>Thursday <span class=\"pull-right\">10:00 AM - 9:00 PM</span></li>\n" +
+                "                                <li>Friday <span class=\"pull-right\">10:00 AM - 9:00 PM</span></li>\n" +
+                "                                <li>Saturday <span class=\"pull-right\">10:00 PM - 9:00 PM</span></li>\n" +
+                "                                <li>Sunday <span class=\"pull-right\">10:00 PM - 8:00 PM</span></li>\n" +
                 "                            </ul>\n" +
                 "                        </div>\n" +
                 "                    </div>\n" +
@@ -188,7 +188,7 @@ public class HelloServlet extends HttpServlet {
                 "                        <br>\n" +
                 "                        <h4 class=\"text-uppercase mb-4\">Contact Us</h4>\n" +
                 "                        <p class=\"lead mb-0\">\n" +
-                "                            215-XXX-XXXX\n" +
+                "                            215-362-9696\n" +
                 "                        </p>\n" +
                 "                    </div>\n" +
                 "                </div>\n" +
