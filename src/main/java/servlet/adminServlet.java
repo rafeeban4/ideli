@@ -129,8 +129,7 @@ public class adminServlet extends HttpServlet {
                 "                </div>\n" +
                 "            </div>\n" +
                 "        </section>\n" +
-                "\n" +
-                "    </body>";
+                "\n";
     }
     protected String printScript() {
         return   "        <script>\n"+
@@ -145,7 +144,8 @@ public class adminServlet extends HttpServlet {
                 "                  }\n" +
                 "              })\n" +
                 "          }" +
-                "        </script>\n";
+                "        </script>\n"+
+        "    </body>";
     }
     protected String printTail(){
         return "</html>";
