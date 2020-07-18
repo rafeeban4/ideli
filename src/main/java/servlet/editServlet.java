@@ -51,7 +51,7 @@ public class editServlet extends HttpServlet {
         setAccessControlHeaders(res);
         res.setContentType("text/plain");
         res.setCharacterEncoding("UTF-8");
-        if(isLoggedIn()){
+        if(true){
             res.setContentType("text/html");
             PrintWriter out = res.getWriter();
             out.println(printHead());
