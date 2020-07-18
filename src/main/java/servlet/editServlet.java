@@ -48,14 +48,16 @@ public class editServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        res.setContentType("text/html");
-        PrintWriter out = res.getWriter();
-        out.println(printHead());
-        out.println(printBody());
-        out.println(announcements());
-        out.println(printTail());
-        out.flush();
-        out.close();
+        if(isLoggedIn()){
+            res.setContentType("text/html");
+            PrintWriter out = res.getWriter();
+            out.println(printHead());
+            out.println(printBody());
+            out.println(announcements());
+            out.println(printTail());
+            out.flush();
+            out.close();
+        }
     }
     protected void addAnnounce(String text){
         Document document = new Document();
@@ -104,6 +106,27 @@ public class editServlet extends HttpServlet {
         }
         return s.toString();
     }
+
+    private Boolean isLoggedIn() {
+        String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
+        MongoClientURI clientURI = new MongoClientURI(uri);
+        MongoClient mongoClient = new MongoClient(clientURI);
+
+        // Connect to database and connection
+        MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
+        MongoCollection collection = mongoDatabase.getCollection("login");
+
+        FindIterable<Document> docs = collection.find();
+        for(Document doc: docs) {
+            if (doc.get("logged in").equals("true")){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return false;
+    }
+
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
@@ -158,7 +181,7 @@ public class editServlet extends HttpServlet {
                 "                <div class=\"divider-custom\">\n" +
                 "                   <form accept-charset=utf-8>\n" +
                 "                       <input type=\"text\" id=\"text\" class=\"fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
-                "                       <input type=\"submit\" class=\"fadeIn fourth\" onclick=\"addText();event.preventDefault();\">\n" +
+                "                       <input type=\"submit\" value=\"Add Announcement\" class=\"fadeIn fourth\" onclick=\"addText();event.preventDefault();\">\n" +
                 "                   </form>" +
                 "                </div>\n";
 
@@ -175,6 +198,7 @@ public class editServlet extends HttpServlet {
                 "              jQuery.post( 'https://ideli.herokuapp.com/edit', {storage: text, function: 'addAnnouncement'}, function( data ) {\n" +
                 "                  if(data.includes(\"Success\")){\n" +
                 "                      alert(\"Announcement Added Successfully\");\n" +
+                "                      location.reload();\n" +
                 "                  }else{\n" +
                 "                      alert(\"ERROR\")\n" +
                 "                  }\n" +

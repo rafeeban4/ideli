@@ -13,10 +13,15 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.UpdateResult;
 import org.apache.commons.io.*;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.nio.charset.*;
+
+import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.set;
 
 
 @WebServlet(
@@ -44,8 +49,10 @@ public class adminServlet extends HttpServlet {
         FindIterable<Document> data = collection.find();
         boolean match = false;
         for (Document doc : data) {
-            if (doc.get("user").equals(x) && doc.get("pass").equals(y))
+            if (doc.get("user").equals(x) && doc.get("pass").equals(y)) {
                 match = true;
+                updateLoggedIn();
+            }
         }
         PrintWriter out = res.getWriter();
         if(match){
@@ -69,7 +76,18 @@ public class adminServlet extends HttpServlet {
         out.flush();
         out.close();
     }
+    protected void updateLoggedIn(){
+        String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
+        MongoClientURI clientURI = new MongoClientURI(uri);
+        MongoClient mongoClient = new MongoClient(clientURI);
 
+        // Connect to database and connection
+        MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
+        MongoCollection collection = mongoDatabase.getCollection("login");
+        Bson filter = eq("logged in", "false");
+        Bson updateOperation = set("logged in", "true");
+        UpdateResult updateResult = collection.updateOne(filter, updateOperation);
+    }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
