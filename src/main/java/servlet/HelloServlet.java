@@ -36,6 +36,8 @@ public class HelloServlet extends HttpServlet {
         out.println(printTail());
         out.flush();
         out.close();
+
+
     }
     protected String announcements(){
         String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
@@ -53,7 +55,7 @@ public class HelloServlet extends HttpServlet {
             s.concat(x.getString("content")+"</p></div>\n" +
                     "                </div>\n");
         }
-        return s;
+        return collection.find().toString();
     }
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
