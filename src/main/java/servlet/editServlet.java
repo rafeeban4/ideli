@@ -18,6 +18,8 @@ import org.bson.Document;
 
 import java.nio.charset.*;
 
+import static com.mongodb.client.model.Filters.eq;
+
 
 @WebServlet(
         name = "EditServlet",
@@ -35,7 +37,7 @@ public class editServlet extends HttpServlet {
         if(function.equals("addAnnouncement"))
             addAnnounce(req.getParameter("storage"));
         else if (function.equals("deleteAnnouncement"))
-            deleteAnnounce(req.getParameter("_id"));
+            deleteAnnounce(req.getParameter("content"));
 
         PrintWriter out = res.getWriter();
         out.println("great Success");
@@ -80,12 +82,7 @@ public class editServlet extends HttpServlet {
         MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
         MongoCollection collection = mongoDatabase.getCollection("announcements");
         // Insert request parameters into the document
-        FindIterable<Document> data = collection.find();
-        for (Document x : data) {
-           if(x.get("_id").equals(text)){
-               collection.deleteOne(x);
-           }
-        }
+        collection.deleteOne(eq("content", text));
 
     }
     protected String announcements(){
@@ -184,9 +181,10 @@ public class editServlet extends HttpServlet {
                 "              });\n" +
                 "          }\n" +
                 "          function deleteText(event){\n" +
-                "              jQuery.post( 'https://ideli.herokuapp.com/edit', {_id: event.target.id, function: 'deleteAnnouncement'}, function( data ) {\n" +
+                "              jQuery.post( 'https://ideli.herokuapp.com/edit', {content: jQuery('#' + event.target.id).html(), function: 'deleteAnnouncement'}, function( data ) {\n" +
                 "                  if(data.includes(\"Success\")){\n" +
                 "                      alert(\"Announcement Deleted Successfully\");\n" +
+                "                      location.reload();\n" +
                 "                  }else{\n" +
                 "                      alert(\"ERROR\")\n" +
                 "                  }\n" +
