@@ -52,7 +52,7 @@ public class HelloServlet extends HttpServlet {
         FindIterable<Document> data = collection.find();
         for (Document x : data) {
             s.append("<div class=\"row text-center\">\n" +
-                    "                    <div class=\"col-sm-12 \"><p class=\"lead\">");
+                    "                    <div class=\"col-sm-12 \"><p class=\"lead font-weight-bold badge-danger\">");
             s.append(x.get("content")+"</p></div>\n" +
                     "                </div>\n");
         }

@@ -88,6 +88,7 @@ public class adminServlet extends HttpServlet {
         Bson updateOperation = set("logged in", "true");
         UpdateResult updateResult = collection.updateOne(filter, updateOperation);
     }
+
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
@@ -159,7 +160,7 @@ public class adminServlet extends HttpServlet {
                 "                  if (data.includes('wrong_user'))\n" +
                 "                      alert('Wrong User!!!');\n" +
                 "                  else {\n" +
-                "                      window.location.assign(window.location.origin+\"/edit\");\n" +
+                "                      window.location.assign(window.location.origin+\"/edit9f3857n398457fn\");\n" +
                 "                  }\n" +
                 "              })\n" +
                 "          }" +

@@ -13,17 +13,20 @@ import com.mongodb.MongoClientURI;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.result.UpdateResult;
 import org.apache.commons.io.*;
 import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import java.nio.charset.*;
 
 import static com.mongodb.client.model.Filters.eq;
+import static com.mongodb.client.model.Updates.set;
 
 
 @WebServlet(
         name = "EditServlet",
-        urlPatterns = {"/edit"}
+        urlPatterns = {"/edit9f3857n398457fn"}
 )
 
 public class editServlet extends HttpServlet {
@@ -38,6 +41,8 @@ public class editServlet extends HttpServlet {
             addAnnounce(req.getParameter("storage"));
         else if (function.equals("deleteAnnouncement"))
             deleteAnnounce(req.getParameter("content"));
+        else if (function.equals("logOut"))
+            logOut();
 
         PrintWriter out = res.getWriter();
         out.println("great Success");
@@ -128,6 +133,18 @@ public class editServlet extends HttpServlet {
         }
         return ret;
     }
+    protected void logOut(){
+        String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
+        MongoClientURI clientURI = new MongoClientURI(uri);
+        MongoClient mongoClient = new MongoClient(clientURI);
+
+        // Connect to database and connection
+        MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
+        MongoCollection collection = mongoDatabase.getCollection("login");
+        Bson filter = eq("logged in", "true");
+        Bson updateOperation = set("logged in", "false");
+        UpdateResult updateResult = collection.updateOne(filter, updateOperation);
+    }
 
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
@@ -177,12 +194,13 @@ public class editServlet extends HttpServlet {
                 "            </div>\n" +
                 "        </header>\n" +
                 "        <!-- Login-->\n" +
+                "        <button type=\"button\" class=\"btn btn-primary\" onClick=\"logOut()\">Admin</button>" +
                 "        <section class=\"page-section portfolio\" id=\"announcements\">\n" +
                 "            <div class=\"container align-items-center\">\n" +
                 "                <!-- Icon Divider-->\n" +
                 "                <div class=\"divider-custom\">\n" +
                 "                   <form accept-charset=utf-8>\n" +
-                "                       <input type=\"text\" id=\"text\" class=\"fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
+                "                       <input  type=\"text\" style=id=\"text\" class=\"form-control form-control-lg fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
                 "                       <input type=\"submit\" value=\"Add Announcement\" class=\"fadeIn fourth\" onclick=\"addText();event.preventDefault();\">\n" +
                 "                   </form>" +
                 "                </div>\n";
@@ -210,6 +228,16 @@ public class editServlet extends HttpServlet {
                 "              jQuery.post( 'https://ideli.herokuapp.com/edit', {content: jQuery('#' + event.target.id).html(), function: 'deleteAnnouncement'}, function( data ) {\n" +
                 "                  if(data.includes(\"Success\")){\n" +
                 "                      alert(\"Announcement Deleted Successfully\");\n" +
+                "                      location.reload();\n" +
+                "                  }else{\n" +
+                "                      alert(\"ERROR\")\n" +
+                "                  }\n" +
+                "              });\n" +
+                "          }\n" +
+                "          function logOut(){\n" +
+                "              jQuery.post( 'https://ideli.herokuapp.com/edit', {function: 'logOut'}, function( data ) {\n" +
+                "                  if(data.includes(\"Success\")){\n" +
+                "                      alert(\"Logged Out Successfully\");\n" +
                 "                      location.reload();\n" +
                 "                  }else{\n" +
                 "                      alert(\"ERROR\")\n" +
