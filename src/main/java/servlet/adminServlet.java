@@ -7,7 +7,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import org.apache.commons.io.*;
+import org.bson.Document;
+
 import java.nio.charset.*;
 
 
@@ -18,16 +26,49 @@ import java.nio.charset.*;
 
 public class adminServlet extends HttpServlet {
     @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
+        setAccessControlHeaders(res);
+        res.setContentType("text/plain");
+
+        String uri = "mongodb+srv://admin1:Admin1@cluster0.78zu6.mongodb.net/test";
+        MongoClientURI clientURI = new MongoClientURI(uri);
+        MongoClient mongoClient = new MongoClient(clientURI);
+
+        // Connect to database and connection
+        MongoDatabase mongoDatabase = mongoClient.getDatabase("ideli");
+        MongoCollection collection = mongoDatabase.getCollection("login");
+        String x = req.getParameter("user");
+        String y = req.getParameter("pass");
+
+        FindIterable<Document> data = collection.find();
+        boolean match = false;
+        for (Document doc : data) {
+            if (doc.get("user").equals(x) && doc.get("pass").equals(y))
+                match = true;
+        }
+        PrintWriter out = res.getWriter();
+        if(match){
+            out.println("great success");
+        }else{
+            out.println("wrong_user");
+        }
+        out.flush();
+        out.close();
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
         out.println(printHead());
         out.println(printBody());
+        out.println(printScript());
         out.println(printTail());
         out.flush();
         out.close();
     }
+
     protected String printHead(){
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
@@ -83,7 +124,7 @@ public class adminServlet extends HttpServlet {
                 "                   <form>\n" +
                 "                       <input type=\"text\" id=\"login\" class=\"fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
                 "                       <input type=\"text\" id=\"password\" class=\"fadeIn third\" name=\"login\" placeholder=\"password\">\n" +
-                "                       <input type=\"submit\" class=\"fadeIn fourth\" value=\"Log In\">\n" +
+                "                       <input type=\"submit\" onclick=\"checkLogin()\" class=\"fadeIn fourth\" value=\"Log In\">\n" +
                 "                   </form>" +
                 "                </div>\n" +
                 "            </div>\n" +
@@ -91,7 +132,29 @@ public class adminServlet extends HttpServlet {
                 "\n" +
                 "    </body>";
     }
+    protected String printScript() {
+        return   "        <script>\n"+
+                "  function checkLogin(){\n" +
+                "              let user = jQuery('#login');\n" +
+                "              let pass = jQuery('#password');\n" +
+                "              jQuery.post( 'https://ideli.herokuapp.com/administrator', {user: user, pass: pass}, function( data ) {\n" +
+                "                  if (data.includes('wrong_user'))\n" +
+                "                      alert('Wrong User!!!');\n" +
+                "                  else {\n" +
+                "                      window.location.assign(window.location.origin+\"/edit\");\n" +
+                "                  }\n" +
+                "              })\n" +
+                "          }" +
+                "        </script>\n";
+    }
     protected String printTail(){
         return "</html>";
+    }
+
+    private void setAccessControlHeaders(HttpServletResponse response) {
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET");
+        response.addHeader("Access-Control-Allow-Headers", "Origin, Content-Type, X-Auth-Token");
+        response.addHeader("Access-Control-Max-Age", "1728000");
     }
 }

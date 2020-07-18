@@ -92,6 +92,17 @@
           function openAdmin() {
               window.location.assign(window.location.origin+"/administrator");
           }
+          function checkLogin(){
+              let user = jQuery('#login');
+              let pass = jQuery('#password');
+              jQuery.post( 'https://ideli.herokuapp.com/administrator', {user: user, pass: pass}, function( data ) {
+                  if (data.includes('wrong_user'))
+                      alert('Wrong User!!!');
+                  else {
+                      window.location.assign(window.location.origin+"/edit");
+                  }
+              })
+          }
         </script>
     </body>
 </html>
