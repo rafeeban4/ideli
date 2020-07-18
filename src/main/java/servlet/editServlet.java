@@ -118,7 +118,7 @@ public class editServlet extends HttpServlet {
 
         FindIterable<Document> docs = collection.find();
         for(Document doc: docs) {
-            if (doc.get("logged in").equals("true")){
+            if (doc.get("logged in") != null &&doc.get("logged in").equals("true")){
                 return true;
             }else{
                 return false;
