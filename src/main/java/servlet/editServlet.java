@@ -158,7 +158,7 @@ public class editServlet extends HttpServlet {
                 "            <div class=\"container align-items-center\">\n" +
                 "                <!-- Icon Divider-->\n" +
                 "                <div class=\"divider-custom\">\n" +
-                "                   <form>\n" +
+                "                   <form accept-charset=utf-8>\n" +
                 "                       <input type=\"text\" id=\"text\" class=\"fadeIn second\" name=\"login\" placeholder=\"login\">\n" +
                 "                       <input type=\"submit\" class=\"fadeIn fourth\" onclick=\"addText()\">\n" +
                 "                   </form>" +
