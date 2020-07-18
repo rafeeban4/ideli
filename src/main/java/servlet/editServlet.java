@@ -38,6 +38,7 @@ public class editServlet extends HttpServlet {
             deleteAnnounce(req.getParameter("_id"));
 
         PrintWriter out = res.getWriter();
+        out.println("great Success");
         out.flush();
         out.close();
     }

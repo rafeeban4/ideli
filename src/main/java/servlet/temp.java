@@ -21,7 +21,7 @@ public class temp {
         for (Document x : data) {
             s.append("<div class=\"row text-center\">\n" +
                     "                    <div class=\"col-sm-12 \"><p class=\"lead\">");
-            s.append(x.get("content")+"</p></div>\n" +
+            s.append(x.get("_id")+"</p></div>\n" +
                     "                </div>\n");
         }
         System.out.println(s.toString());
