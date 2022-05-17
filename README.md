@@ -1,3 +1,5 @@
+This website sucks, check heroku for deploy info. HelloServlet has everything.
+
 # Using Heroku to deploy servlets and JSPs
 
 This tutorial will show you how to deploy and develop a Heroku app that runs servlets and JSPs.
