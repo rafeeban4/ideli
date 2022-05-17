@@ -155,13 +155,13 @@ public class HelloServlet extends HttpServlet {
                 "                    <div class=\"col-sm-4\">\n" +
                 "                        <div class=\"business-hours\">\n" +
                 "                            <ul class=\"list-unstyled opening-hours\">\n" +
-                "                                <li>Monday <span class=\"pull-right \">10:00 AM - 9:00 PM</span></li>\n" +
-                "                                <li>Tuesday <span class=\"pull-right\">10:00 AM - 9:00 PM</span></li>\n" +
-                "                                <li>Wednesday <span class=\"pull-right\">10:00 AM - 9:00 PM</span></li>\n" +
-                "                                <li>Thursday <span class=\"pull-right\">10:00 AM - 9:00 PM</span></li>\n" +
-                "                                <li>Friday <span class=\"pull-right\">10:00 AM - 9:00 PM</span></li>\n" +
-                "                                <li>Saturday <span class=\"pull-right\">10:00 PM - 9:00 PM</span></li>\n" +
-                "                                <li>Sunday <span class=\"pull-right\">10:00 PM - 8:00 PM</span></li>\n" +
+                "                                <li>Monday <span class=\"pull-right \">10:00 AM - 10:00 PM</span></li>\n" +
+                "                                <li>Tuesday <span class=\"pull-right\">10:00 AM - 10:00 PM</span></li>\n" +
+                "                                <li>Wednesday <span class=\"pull-right\">10:00 AM - 10:00 PM</span></li>\n" +
+                "                                <li>Thursday <span class=\"pull-right\">10:00 AM - 10:00 PM</span></li>\n" +
+                "                                <li>Friday <span class=\"pull-right\">10:00 AM - 10:00 PM</span></li>\n" +
+                "                                <li>Saturday <span class=\"pull-right\">10:00 PM - 10:00 PM</span></li>\n" +
+                "                                <li>Sunday <span class=\"pull-right\">11:00 PM - 9:00 PM</span></li>\n" +
                 "                            </ul>\n" +
                 "                        </div>\n" +
                 "                    </div>\n" +
