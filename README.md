@@ -1,4 +1,5 @@
 This website sucks, check heroku for deploy info. HelloServlet has everything.
+empty commit
 
 # Using Heroku to deploy servlets and JSPs
 
